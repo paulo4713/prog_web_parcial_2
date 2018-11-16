@@ -22,15 +22,14 @@ app.get('/pagina_c', (req, res) => {
     res.render('pagina_c');
 });
 
-app.get('/visita/:visita_a/:visita_b/:visita_c', (req, res) => {
+app.get('/visita/:visita_a', (req, res) => {
+   var visitasEnA;
+   var visitasEnB;
+   var visitasEnC;
 
-    var data = [
-        visita_a = visita_a,
-        visita_b = visita_b,
-        visita_c = visita_c,
-    ];
+   var data = "Página A:" + visitasEnA+req.query.visita_a + "visitas\n"+"Página B:" + visitasEnB+req.query.visita_b + "visitas\n"+"Página C:" + visitasEnC+req.query.visita_c + "visitas\n";
 
-    fs.writeFile('visitas.txt', data, (err) => {
+    fs.writeFile('/visitas.txt', data, (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
       });
