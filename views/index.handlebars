@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parcial 2</title>
+</head>
+<body>
+<form>
+    <span>URL: </span><input name="img">
+    <span>Nombre de Archivo: </span><input name="n_img">
+    <button type="submit">Descargar</button>
+</form>
+    <script>
+            document.querySelector('form').addEventListener('submit', function(event){
+                event.preventDefault();
+                fetch('/api/download?img='+this.img.value+'&name='+this.name.value)
+                    .then(b => b.text())
+                    .then(alert)
+                    .catch(console.error);
+            });
+        </script>
+
+</body>
+</html>
